@@ -3,9 +3,10 @@
   "compilerOptions": {
     "typeRoots": ["node_modules/@types"],
     "module": "commonjs",
+    "target": "es5",
     "lib": ["esnext","dom"],
     "sourceMap": true,
-    "allowJs": true,
+    "allowJs": false,
     "moduleResolution": "node",
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -16,6 +17,7 @@
     "allowSyntheticDefaultImports": true,
     "noUnusedLocals": true,
     "baseUrl": ".",
+    "outDir": "out",
     "paths": {
       
     },

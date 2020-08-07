@@ -21,6 +21,7 @@
     "forin": false,
     "interface-name": false,
     "label-position": true,
+    "defaultSeverity": "warning",
     "max-classes-per-file": false,
     "member-access": false,
     "member-ordering": false,

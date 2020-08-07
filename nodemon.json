@@ -2,5 +2,5 @@
   "watch": ["./src"],
   "ext": "ts",
   "ignore": ["src/**/*.spec.ts"],
-  "exec": "ts-node ./src/index.ts"
+  "exec": "TS_NODE_LOG_ERROR=true ts-node ./src/index.ts"
 }
