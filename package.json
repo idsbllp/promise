@@ -1,0 +1,19 @@
+{
+  "name": "ts-start",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx nodemon"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^12.12.7",
+    "nodemon": "^2.0.1",
+    "ts-node": "^8.4.1",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.2"
+  }
+}
