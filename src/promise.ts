@@ -2,6 +2,7 @@ enum Status {
   Pending = 'pending',
   Fulfilled = 'fulfilled',
   Rejected = 'rejected',
+  PromiseReturned = 'promiseReturned',
 }
 
 type TFulfilledFn<T, TResult = void> = (value: T) => TResult;
@@ -29,7 +30,12 @@ function doResolveAsync<T>(executor: TExecutorFn<T>, promiseA: PromiseA<T>) {
 
 function handleResolve<T, TValue>(promiseA: PromiseA<T>, value: TValue) {
   promiseA.value = value;
-  promiseA.status = Status.Fulfilled;
+
+  if (value instanceof PromiseA) {
+    promiseA.status = Status.PromiseReturned;
+  } else {
+    promiseA.status = Status.Fulfilled;
+  }
 
   promiseA.deferredCallback.forEach(deferred => {
     handleDeferred(promiseA, deferred);
@@ -44,6 +50,10 @@ function handleResolve<T, TValue>(promiseA: PromiseA<T>, value: TValue) {
  * 当状态为 Fulfilled 或者 Rejected 时，延时分别执行对应函数
  */
 function handleDeferred<TResult, T>(promiseA: PromiseA<T>, deferred: IDeferred<TResult, T>) {
+  while (promiseA.status === Status.PromiseReturned) {
+    promiseA = promiseA.value;
+  }
+
   if (promiseA.status === Status.Pending) {
     promiseA.deferredCallback.push(deferred);
     return;

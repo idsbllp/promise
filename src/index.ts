@@ -13,7 +13,11 @@ const promise2 = promiseA1.then(data => {
 // const promiseA2 = promiseA1.then(data => {
   console.log(111, data);
 
-  return 22222;
+  return new PromiseA<string>(resolve => {
+    setTimeout(() => {
+      resolve('promise return');
+    }, 1000);
+  });
 }).then(res => {
   console.log(222222222222, res, promise2.status);
   return {};
