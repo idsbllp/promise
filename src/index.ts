@@ -4,6 +4,8 @@ const promiseA1 = new PromiseA<string>((resolve, reject) => {
   setTimeout(() => {
     resolve('string');
   }, 1000);
+
+  reject('error');
 });
 
 // console.log('promiseA1 111: ', promiseA1);
